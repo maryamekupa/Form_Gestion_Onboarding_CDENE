@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Onboarding Form - CDENE</title>
+    <link rel="stylesheet" href="onboarding.css">
+</head>
+<body>
+  <div class="form-card">
+    <form id="formMateriel" class="bloc-formulaire" style="display:block;">
+      <div id="enTetePDF">
+        <div class="enTete-grid">
+          <div class="two-col">
+            <div class="enTete-logo">
+              <img src="https://pfst.cf2.poecdn.net/base/image/6d4995a47e5cf7a45172847ef067170a998ddf965eb35e3c6cf41c542b15c373?w=600&h=238" alt="Logo CDENE">
+            </div>
+            <div class="enTete-contact">
+              <span>✉️ Mkupa@cdene.ns.ca</span>
+              <span>☎️ 902-422-2752</span>
+            </div>
+          </div>
+          <h2 class="enTete-titre">Formulaire d'entrée en poste — Employé du CDÉNÉ</h2>
+          <p class="enTete-instructions">
+      Ce formulaire sert à gérer les accès et éléments liés à l'entrée en poste d’un employé. Il doit être rempli par les RH et transmis au service TI.
+          </p>
+        </div>
+      </div>
+
+      <h2>Général</h2>
+      <div class="grid">
+        <div class="field"><label>Nom / Prénom</label><input type="text" name="Nom / Prénom" value placeholder="Entrez le nom complet de l'employé"></div>
+        <div class="field"><label>Date de début</label><input type="date" name="Date de début" value placeholder="Entrez la date de début"></div>
+        <div class="field"><label>Poste comblé</label><input type="text" name="Poste comblé" value placeholder="Entrez le nom département"></div>
+        <div class="field"><label>Départment</label><input type="text" name="department" value placeholder="Entrez le nom du département"></div>
+      </div>
+      <div class="grid" style="margin-top:15px;">
+        <div class="field locked-field">
+          <label>Personne de contact-suivi </label>
+          <input type="text" name="personne_de_contact_suivi" value="Maryame Mfuamba" readonly>
+        </div>
+        <div class="field locked-field">
+          <label>Email de contact-suivi</label>
+          <input type="email" name="email_de_contact_suivi" value="mkupa@cdene.ns.ca" readonly>
+        </div>
+      </div>
+
+      <h2>Comptes et Accès</h2>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="Creation courriel" onclick="return true;"> Création d'un nouveau courriel</label>
+        <label><input type="checkbox" name="Recuperation courriel" onclick="return true;"> Récuperation d'un courriel existant</label>
+      </div>
+      <div class="grid" style="margin-top:15px;">
+        <div class="field"><label>Adresse courriel</label><input type="email" name="requested_email" value placeholder="Entrez l'email à créer ou à récuperer"></div>
+        <div class="field"><label>Listes de distribution auxquelles ajouter l’employé</label><input type="text" name="distribution_lists" value placeholder="Entrez les lists de distribution"></div>
+      </div>
+      <div class="checkbox-group">
+        <label><input type="checkbox" class="locked-checkbox" name="m365_standard" checked onclick="return false;"> Activation - Microsoft 365 Standard Account</label>
+      </div>
+
+      <div class="grid" style="margin-top:15px;">
+            <div class="field"><label>Accès à l'ancien boite mail du compte:</label><input type="text" name="Acces_Boite_Mail" value placeholder="Boite mail de l'employé precedent"></div>
+            <div class="field"><label>Accès aux documents Onedrive du compte: </label><input type="text" name="Destination_OneDrive" placeholder="Entrez E-mail"></div>
+        </div>
+        <div class="field"><label>Groupe de sécurité à mettre à jour (<span style="font-style: italic; font-weight: normal;"> Préciser l’acronyme du groupe de sécurité SharePoint dans lequel l’utilisateur doit être ajouté.</span>)</label><input type="text" name="Groupe_Securite" placeholder="Ex : FC-CDENE"></div>
+
+      <h2> PC/Ordinateur à confugurer</h2>
+      <div class="grid" style="margin-top:15px;">
+        <div class="field"><label>Numéro de série</label><input type="text" name="serial_number" value placeholder="Entrez le numéro de série"></div>
+        <div class="field"><label>Nom de l'ordinateur</label><input type="text" name="device_name" value placeholder="Entrez le nom inscrit dans le système"></div>
+      </div>
+
+      <h2>Notes complémentaires</h2>
+      <textarea name="notes" placeholder="Ajoutez vos notes ici..."></textarea>
+
+      <button type="button" id="btnDownloadPDF" class="btn-submit">TÉLÉCHARGER LE PDF</button>
+    </form>
+  </div>
+
+  <!-- PDF libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.min.js"></script>
+  <!-- REQUIRED for interactive/editable PDF fields (AcroForm) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.plugin.acroform.min.js"></script>
+  <script src="onboarding.js"></script>
+</body>
+</html>
