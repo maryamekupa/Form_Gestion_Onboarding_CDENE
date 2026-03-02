@@ -364,5 +364,42 @@ function cloneWithValues(node) {
       }
     }
 
+    function forceFieldsBlue() {
+      document.querySelectorAll('#formMateriel input, #formMateriel textarea, #formMateriel select').forEach((el) => {
+        if (el.matches('input[type="checkbox"], input[type="radio"]')) return;
+        if (el.name === 'personne_de_contact_suivi' || el.name === 'email_de_contact_suivi') return;
+        if (el.closest('.locked-field') && (el.readOnly || el.disabled)) return;
+        el.style.color = '#003a70';
+        el.style.webkitTextFillColor = '#003a70';
+        el.style.caretColor = '#003a70';
+      });
+    }
+
+    function initExclusiveMailModeCheckboxes() {
+      const creation = document.querySelector('input[name="Creation courriel"]');
+      const recuperation = document.querySelector('input[name="Recuperation courriel"]');
+      if (!creation || !recuperation) return;
+
+      creation.addEventListener('change', () => {
+        if (creation.checked) recuperation.checked = false;
+      });
+
+      recuperation.addEventListener('change', () => {
+        if (recuperation.checked) creation.checked = false;
+      });
+    }
+
+    document.addEventListener('input', (e) => {
+      if (!e.target || !e.target.matches('#formMateriel input, #formMateriel textarea, #formMateriel select')) return;
+      if (e.target.matches('input[type="checkbox"], input[type="radio"]')) return;
+      if (e.target.name === 'personne_de_contact_suivi' || e.target.name === 'email_de_contact_suivi') return;
+      if (e.target.closest('.locked-field') && (e.target.readOnly || e.target.disabled)) return;
+      e.target.style.color = '#003a70';
+      e.target.style.webkitTextFillColor = '#003a70';
+      e.target.style.caretColor = '#003a70';
+    });
+
+    initExclusiveMailModeCheckboxes();
+    forceFieldsBlue();
     const btnPDF = document.getElementById('btnDownloadPDF');
     if (btnPDF) btnPDF.addEventListener('click', genererPDFGlobal);
