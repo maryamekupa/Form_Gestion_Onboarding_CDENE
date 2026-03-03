@@ -264,8 +264,13 @@ document.addEventListener('input', (e) => {
   e.target.style.caretColor = '#003a70';
 });
 
-initExclusiveMailModeCheckboxes();
-initCellulaireFlow();
-forceFieldsBlue();
+try {
+  initExclusiveMailModeCheckboxes();
+  initCellulaireFlow();
+  forceFieldsBlue();
+} catch (e) {
+  console.error('Initialisation du formulaire échouée:', e);
+}
 const btnPDF = document.getElementById('btnDownloadPDF');
 if (btnPDF) btnPDF.addEventListener('click', genererPDFGlobal);
+}
