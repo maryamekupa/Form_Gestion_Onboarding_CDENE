@@ -192,7 +192,7 @@ async function genererPDFCapture() {
     pdf.save('Employee_Onboarding_Form.pdf');
   } catch (error) {
     console.error('Erreur PDF:', error);
-    alert('Erreur lors de la generation du PDF: ' + error.message);
+    alert('Erreur lors de la génération du PDF: ' + error.message);
   } finally {
     if (wrapper) wrapper.remove();
   }
@@ -222,7 +222,38 @@ function initExclusiveMailModeCheckboxes() {
     if (recuperation.checked) creation.checked = false;
   });
 }
+function initCellulaireFlow() {
+  const radiosAttribue = document.querySelectorAll('input[name="cellulaire_attribue"]');
+  const radiosOrigine = document.querySelectorAll('input[name="cellulaire_origine"]');
+  const details = document.getElementById('cellulaireDetails');
+  const ancienDetails = document.getElementById('ancienCellulaireDetails');
+  if (!radiosAttribue.length || !details || !ancienDetails) return;
 
+  const getCheckedValue = (name) => {
+    const node = document.querySelector(`input[name="${name}"]:checked`);
+    return node ? node.value : '';
+  };
+
+  const update = () => {
+    const attribue = getCheckedValue('cellulaire_attribue');
+    const origine = getCheckedValue('cellulaire_origine');
+
+    const showDetails = attribue === 'Oui';
+    details.style.display = showDetails ? 'block' : 'none';
+    if (!showDetails) {
+      clearFields(details);
+      return;
+    }
+
+    const showAncien = origine === 'Ancien utilisateur';
+    ancienDetails.style.display = showAncien ? 'block' : 'none';
+    if (!showAncien) clearFields(ancienDetails);
+  };
+
+  radiosAttribue.forEach((r) => r.addEventListener('change', update));
+  radiosOrigine.forEach((r) => r.addEventListener('change', update));
+  update();
+}
 document.addEventListener('input', (e) => {
   if (!e.target || !e.target.matches('#formMateriel input, #formMateriel textarea, #formMateriel select')) return;
   if (e.target.matches('input[type="checkbox"], input[type="radio"]')) return;
@@ -234,6 +265,7 @@ document.addEventListener('input', (e) => {
 });
 
 initExclusiveMailModeCheckboxes();
+initCellulaireFlow();
 forceFieldsBlue();
 const btnPDF = document.getElementById('btnDownloadPDF');
 if (btnPDF) btnPDF.addEventListener('click', genererPDFGlobal);
