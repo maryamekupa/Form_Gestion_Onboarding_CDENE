@@ -192,7 +192,7 @@ async function genererPDFCapture() {
     pdf.save('Employee_Onboarding_Form.pdf');
   } catch (error) {
     console.error('Erreur PDF:', error);
-    alert('Erreur lors de la génération du PDF: ' + error.message);
+    alert('Erreur lors de la generation du PDF: ' + error.message);
   } finally {
     if (wrapper) wrapper.remove();
   }
@@ -222,6 +222,18 @@ function initExclusiveMailModeCheckboxes() {
     if (recuperation.checked) creation.checked = false;
   });
 }
+
+function clearFields(container) {
+  if (!container) return;
+  container.querySelectorAll('input, textarea, select').forEach((el) => {
+    if (el.type === 'checkbox' || el.type === 'radio') {
+      el.checked = false;
+      return;
+    }
+    el.value = '';
+  });
+}
+
 function initCellulaireFlow() {
   const radiosAttribue = document.querySelectorAll('input[name="cellulaire_attribue"]');
   const radiosOrigine = document.querySelectorAll('input[name="cellulaire_origine"]');
@@ -254,6 +266,7 @@ function initCellulaireFlow() {
   radiosOrigine.forEach((r) => r.addEventListener('change', update));
   update();
 }
+
 document.addEventListener('input', (e) => {
   if (!e.target || !e.target.matches('#formMateriel input, #formMateriel textarea, #formMateriel select')) return;
   if (e.target.matches('input[type="checkbox"], input[type="radio"]')) return;
@@ -264,13 +277,13 @@ document.addEventListener('input', (e) => {
   e.target.style.caretColor = '#003a70';
 });
 
+const btnPDF = document.getElementById('btnDownloadPDF');
+if (btnPDF) btnPDF.addEventListener('click', genererPDFGlobal);
+
 try {
   initExclusiveMailModeCheckboxes();
   initCellulaireFlow();
   forceFieldsBlue();
 } catch (e) {
   console.error('Initialisation du formulaire échouée:', e);
-}
-const btnPDF = document.getElementById('btnDownloadPDF');
-if (btnPDF) btnPDF.addEventListener('click', genererPDFGlobal);
 }
