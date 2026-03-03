@@ -32,14 +32,14 @@
         <div class="field"><label>Nom / Prénom</label><input type="text" name="Nom / Prénom" value placeholder="Entrez le nom complet de l'employé"></div>
         <div class="field"><label>Date de début</label><input type="date" name="Date de début" value placeholder="Entrez la date de début"></div>
         <div class="field"><label>Poste comblé</label><input type="text" name="Poste comblé" value placeholder="Entrez le poste"></div>
-        <div class="field"><label>Départment</label><input type="text" name="department" value placeholder="Entrez le nom du département"></div>
+        <div class="field"><label>Département</label><input type="text" name="department" value placeholder="Entrez le nom du département"></div>
       </div>
       <div class="grid" style="margin-top:15px;">
-        <div class="field locked-field">
+        <div class=" field locked-field">
           <label>Personne de contact-suivi </label>
           <input type="text" name="personne_de_contact_suivi" value="Maryame Mfuamba" readonly>
         </div>
-        <div class="field locked-field">
+        <div class= "field locked-field">
           <label>Email de contact-suivi</label>
           <input type="email" name="email_de_contact_suivi" value="mkupa@cdene.ns.ca" readonly>
         </div>
@@ -48,10 +48,10 @@
       <h2>Comptes et Accès</h2>
       <div class="checkbox-group">
         <label><input type="checkbox" name="Creation courriel"> Création d'un nouveau courriel</label>
-        <label><input type="checkbox" name="Recuperation courriel"> Récuperation d'un courriel existant</label>
+        <label><input type="checkbox" name="Recuperation courriel"> Récupération d'un courriel existant</label>
       </div>
       <div class="grid" style="margin-top:15px;">
-        <div class="field"><label>Adresse courriel</label><input type="email" name="requested_email" value placeholder="Entrez l'email à créer ou à récuperer"></div>
+        <div class="field"><label>Adresse courriel</label><input type="email" name="requested_email" value placeholder="Entrez l'email à créer ou à récupérer"></div>
         <div class="field"><label>Accès — Boîte Mail Partagée (<span style="font-style: italic; font-weight: normal;"> Si applicable.</span>) </label><input type="text" name="distribution_lists" value placeholder="Entrez le nom de la boîte mail partagée"></div>
       </div>
       <div class="checkbox-group">
@@ -59,15 +59,43 @@
       </div>
 
       <div class="grid" style="margin-top:15px;">
-            <div class="field"><label>Accès à l'ancien boite mail du compte:</label><input type="text" name="Acces_Boite_Mail" value placeholder="Boite mail de l'employé precedent"></div>
+            <div class="field"><label>Accès à l'ancienne boîte mail du compte:</label><input type="text" name="Acces_Boite_Mail" value placeholder="Boîte mail de l'employé précédent"></div>
             <div class="field"><label>Accès aux documents Onedrive du compte: </label><input type="text" name="Destination_OneDrive" placeholder="Entrez E-mail"></div>
         </div>
-        <div class="field"><label>Groupe de sécurité à mettre à jour (<span style="font-style: italic; font-weight: normal;"> Préciser l’acronyme du groupe de sécurité SharePoint dans lequel l’utilisateur doit être ajouté.</span>)</label><input type="text" name="Groupe_Securite" placeholder="Ex : FC-CDENE"></div>
+        <div class="field"><label>Groupe de sécurité à mettre à jour (<span style="font-style: italic; font-weight: normal;"> Préciser l’acronyme du groupe de sécurité SharePoint auquel l’utilisateur doit être ajouté.</span>)</label><input type="text" name="Groupe_Securite" placeholder="Ex. : FC-CDENE"></div>
 
-      <h2> PC/Ordinateur à confugurer</h2>
+      <h2> PC/Ordinateur à configurer</h2>
       <div class="grid" style="margin-top:15px;">
         <div class="field"><label>Numéro de série</label><input type="text" name="serial_number" value placeholder="Entrez le numéro de série"></div>
         <div class="field"><label>Nom de l'ordinateur</label><input type="text" name="device_name" value placeholder="Entrez le nom inscrit dans le système"></div>
+      </div>
+
+            <h2>Cellulaire professionnel</h2>
+      <div class="radio-row">
+        <label><input type="radio" name="cellulaire_attribue" value="Oui"> Oui, un cellulaire est attribué</label>
+        <label><input type="radio" name="cellulaire_attribue" value="Non"> Non</label>
+      </div>
+
+      <div id="cellulaireDetails" class="conditional-block" style="display:none;">
+        <div class="field">
+          <label>Type d'attribution du cellulaire</label>
+          <div class="radio-row">
+            <label><input type="radio" name="cellulaire_origine" value="Ancien utilisateur"> Utilisé par un ancien utilisateur</label>
+            <label><input type="radio" name="cellulaire_origine" value="Nouveau"> Nouveau cellulaire</label>
+          </div>
+        </div>
+
+        <div id="ancienCellulaireDetails" style="display:none;">
+          <div class="grid">
+            <div class="field"><label>Marque / modele du telephone</label><input type="text" name="telephone_marque_modele" placeholder="Ex : iPhone 13, Samsung A54"></div>
+            <div class="field"><label>Ancien utilisateur du telephone</label><input type="text" name="ancien_utilisateur_telephone" placeholder="Nom"></div>
+            <div class="field"><label>Compte a retirer de Microsoft Authenticator</label><input type="text" name="compte_offboarding_authenticator" placeholder="Adresse courriel de l'ancien utilisateur"></div>
+          </div>
+          <div class="checkbox-group" style="margin-top:10px;">
+            <label><input type="checkbox" name="action_offboarding_authenticator" checked onclick="return false;">Offboarding Authenticator de l'ancien utilisateur</label>
+            <label><input type="checkbox" name="action_onboarding_nouveau_user" checked> Connecter le nouveau user sur ce telephone</label>
+          </div>
+        </div>
       </div>
 
       <h2>Notes complémentaires</h2>
