@@ -285,5 +285,5 @@ try {
   initCellulaireFlow();
   forceFieldsBlue();
 } catch (e) {
-  console.error('Initialisation du formulaire échouée:', e);
+  console.error('Initialisation formulaire échouée:', e);
 }
