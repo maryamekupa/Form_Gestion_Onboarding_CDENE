@@ -70,7 +70,7 @@
         <div class="field"><label>Nom de l'ordinateur</label><input type="text" name="device_name" value placeholder="Entrez le nom inscrit dans le système"></div>
       </div>
 
-            <h2>Cellulaire professionnel</h2>
+         <h2>Cellulaire professionnel</h2>
       <div class="radio-row">
         <label><input type="radio" name="cellulaire_attribue" value="Oui"> Oui, un cellulaire est attribué</label>
         <label><input type="radio" name="cellulaire_attribue" value="Non"> Non</label>
@@ -88,16 +88,15 @@
         <div id="ancienCellulaireDetails" style="display:none;">
           <div class="grid">
             <div class="field"><label>Marque / modele du telephone</label><input type="text" name="telephone_marque_modele" placeholder="Ex : iPhone 13, Samsung A54"></div>
-            <div class="field"><label>Ancien utilisateur du telephone</label><input type="text" name="ancien_utilisateur_telephone" placeholder="Nom"></div>
-            <div class="field"><label>Compte a retirer de Microsoft Authenticator</label><input type="text" name="compte_offboarding_authenticator" placeholder="Adresse courriel de l'ancien utilisateur"></div>
+            <div class="field"><label>Ancien utilisateur du téléphone</label><input type="text" name="ancien_utilisateur_telephone" placeholder="Nom / prénom"></div>
+            <div class="field"><label>Compte à retirer de Microsoft Authenticator</label><input type="text" name="compte_offboarding_authenticator" placeholder="Adresse courriel de l'ancien utilisateur"></div>
           </div>
           <div class="checkbox-group" style="margin-top:10px;">
-            <label><input type="checkbox" name="action_offboarding_authenticator" checked onclick="return false;">Offboarding Authenticator de l'ancien utilisateur</label>
-            <label><input type="checkbox" name="action_onboarding_nouveau_user" checked> Connecter le nouveau user sur ce telephone</label>
+            <label><input type="checkbox" name="action_offboarding_authenticator" checked> Offboarding Authenticator de l'ancien utilisateur</label>
+            <label><input type="checkbox" name="action_onboarding_nouveau_user" checked onclick="return false;"> Connecter le nouveau user sur ce telephone</label>
           </div>
         </div>
       </div>
-
       <h2>Notes complémentaires</h2>
       <textarea name="notes" placeholder="Ajoutez vos notes ici..."></textarea>
 
